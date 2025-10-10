@@ -59,7 +59,9 @@ function css(done) {
 function js(done) {
     pump([
         src([
-            // pull in lib files first so our own code can depend on it
+            // pull in GSAP from node_modules first
+            'node_modules/gsap/dist/gsap.min.js',
+            // then pull in lib files so our own code can depend on it
             'assets/js/lib/*.js',
             'assets/js/*.js'
         ], {sourcemaps: true}),

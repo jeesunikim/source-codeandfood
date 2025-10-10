@@ -2,13 +2,18 @@
     <div class="gh-navigation-inner gh-inner">
 
         <div class="gh-navigation-brand">
+            {{!-- {{> "icons/bookshelf"}} --}}
+
+            {{> "icons/journals-left-side"}}
             <a class="gh-navigation-logo is-title" href="{{@site.url}}">
-                {{#if @site.logo}}
+            {{> "icons/logo"}}
+                {{!-- {{#if @site.logo}}
                     <img src="{{@site.logo}}" alt="{{@site.title}}">
                 {{else}}
                     {{@site.title}}
-                {{/if}}
+                {{/if}} --}}
             </a>
+            {{> "icons/journals-right-side"}}
             {{> "search-toggle"}}
             <button class="gh-burger gh-icon-button" aria-label="Menu">
                 {{> "icons/burger"}}
