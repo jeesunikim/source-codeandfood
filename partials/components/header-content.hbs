@@ -20,11 +20,12 @@
                     {{> "post-card" imageSizes="(max-width: 767px) calc(100vw - max(8vmin, 40px)), 640px"}}
                 {{/foreach}}
             </div>
-            <div class="gh-header-middle">
+            {{!-- Omitting the Middle One --}}
+            {{!-- <div class="gh-header-middle">
                 {{#foreach posts from="2" limit="3"}}
                     {{> "post-card"}}
                 {{/foreach}}
-            </div>
+            </div> --}}
             <div class="gh-header-right">
                 {{#if @custom.show_featured_posts}}
                     {{> "components/featured" showFeatured=@custom.show_featured_posts limit=6}}

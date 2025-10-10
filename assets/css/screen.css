@@ -44,6 +44,7 @@ production stylesheet in assets/built/screen.css
   21.2. Footer bar
   21.3. Footer signup
 22. Lightbox
+23. SVG
 
 */
 
@@ -68,7 +69,7 @@ production stylesheet in assets/built/screen.css
     --font-mono: "JetBrains Mono", Menlo, Consolas, Monaco, "Liberation Mono", "Lucida Console", monospace;
     --container-width: 1320px;
     --container-gap: clamp(24px, 1.7032rem + 1.9355vw, 48px);
-    --grid-gap: 42px;
+    --grid-gap: 56px;
 }
 
 :root.has-light-text,
@@ -419,7 +420,7 @@ body[class*=" gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-hea
 /* ---------------------------------------------------------- */
 
 .gh-navigation {
-    height: 100px;
+    height: 150px;
     font-size: 1.5rem;
     font-weight: 550;
     background-color: var(--background-color);
@@ -439,6 +440,8 @@ body[class*=" gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-hea
 }
 
 .gh-navigation-brand {
+    display: flex;
+    
     line-height: 1;
 }
 
@@ -449,6 +452,9 @@ body[class*=" gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-hea
     font-weight: 725;
     letter-spacing: -0.015em;
     white-space: nowrap;
+    display:flex;
+    align-items:center;
+    margin-top: 20px;
 }
 
 .gh-navigation-logo img {
@@ -758,25 +764,15 @@ Search                         LOGO                    Login Subscribe
 
 @media (max-width: 767px) {
     .gh-burger {
-        display: flex;
+        display: none;
     }
 
     #gh-navigation {
-        height: 64px;
-    }
-
-    #gh-navigation .gh-navigation-inner {
-        grid-template-rows: auto 1fr auto;
-        grid-template-columns: 1fr;
-        gap: 48px;
+        height: 80px;
     }
 
     #gh-navigation .gh-navigation-brand {
-        display: grid;
-        grid-template-columns: 1fr auto auto;
-        grid-column-start: 1;
-        align-items: center;
-        height: 64px;
+        height: 80px;
     }
 
     #gh-navigation .gh-navigation-logo {
@@ -834,6 +830,11 @@ Search                         LOGO                    Login Subscribe
 
     #gh-main {
         transition: opacity 0.4s;
+    }
+
+    /* @todo */
+    .gh-icon-button {
+        display: none;
     }
 
     .is-open#gh-navigation {
@@ -1189,11 +1190,11 @@ Search                         LOGO                    Login Subscribe
 
 .gh-header.is-highlight .gh-header-left {
     position: relative;
-    grid-column: span 8;
+    grid-column: span 12;
 }
 
 .gh-header.is-highlight .gh-header-left .gh-card {
-    grid-column: span 8;
+    grid-column: span 12;
     grid-row: span 3;
 }
 
@@ -1226,7 +1227,7 @@ Search                         LOGO                    Login Subscribe
     margin-top: 12px;
 }
 
-.gh-header.is-highlight .gh-header-middle {
+/* .gh-header.is-highlight .gh-header-middle {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -1240,10 +1241,10 @@ Search                         LOGO                    Login Subscribe
 
 .gh-header.is-highlight .gh-header-middle .gh-card .gh-card-excerpt {
     display: none;
-}
+} */
 
 .gh-header.is-highlight .gh-header-right {
-    grid-column: 13 / -1;
+    grid-column: 13 / span 5;
 }
 
 .gh-header.is-highlight .gh-featured {
@@ -1294,18 +1295,18 @@ Search                         LOGO                    Login Subscribe
         grid-column: span 6;
     }
 
-    .gh-header.is-highlight .gh-header-middle {
+    /* .gh-header.is-highlight .gh-header-middle {
+        grid-column: 7 / -1;
+    } */
+
+    .gh-header.is-highlight .gh-header-right {
         grid-column: 7 / -1;
     }
 
-    .gh-header.is-highlight .gh-header-right {
-        grid-column: 1 / -1;
-    }
-
-    .gh-header.is-highlight .gh-featured-feed {
+    /* .gh-header.is-highlight .gh-featured-feed {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-    }
+    } */
 
     .gh-header.is-highlight .gh-featured-feed .gh-card:before {
         width: calc(100% + var(--grid-gap));
@@ -2756,47 +2757,51 @@ body[class*=" gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-hea
 /* 21.2. Footer bar */
 
 .gh-footer-bar {
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
+    display: flex;
+    justify-content: center;
     align-items: center;
-    column-gap: 32px;
     margin-bottom: 100px;
     padding-block: 28px;
     font-weight: 550;
     border-block: 1px solid var(--color-border);
 }
 
-.gh-footer-logo {
+/* .gh-footer-logo {
     position: relative;
     font-family: var(--gh-font-heading, var(--font-sans));
     font-size: calc(2.4rem * var(--factor, 1));
     font-weight: 725;
     letter-spacing: -0.015em;
     white-space: nowrap;
-}
+} */
 
 .gh-footer-logo img {
     max-height: 40px;
 }
 
-.gh-footer-menu .nav {
+.gh-footer-social-media {
     display: flex;
     justify-content: center;
-    gap: 8px 28px;
+    gap: 10px;
     flex-wrap: wrap;
     margin: 0;
     padding: 0;
     list-style-type: none;
+
+    svg {
+        width: 24px;
+        height: 24px;
+    }
 }
 
-.gh-footer-copyright {
+/* .gh-footer-copyright {
     text-align: right;
     white-space: nowrap;
 }
 
 .gh-footer-copyright a {
     text-decoration: underline;
-}
+} */
 
 /* 21.3. Footer signup */
 
@@ -3330,4 +3335,16 @@ body[class*=" gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-hea
 
 .pswp--minimal--dark .pswp__top-bar {
     background: none;
+}
+
+/* 23. SVG
+/* ---------------------------------------------------------- */
+
+.surfboard{
+     /* animation: carmove 22s ease-in-out infinite both; */
+}
+
+@keyframes carmove {
+  /* 25% { rotate: 15deg; } */
+  /* 85% { rotate: 0deg; } */
 }
